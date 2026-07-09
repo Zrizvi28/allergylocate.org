@@ -159,7 +159,28 @@
     }
 
     .allergen-btn:hover { background: #eaf3e6; }
-
+    
+.card-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: contain;
+  background: #f5f5f5;
+  flex-shrink: 0;
+}
+.card-logo-fallback {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: #eaf3e6;
+  color: #1a5c3a;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
     #empty-state { display: none; text-align: center; padding: 60px 20px; color: #aaa; }
     #empty-state p { font-size: 14px; margin-top: 10px; }
     #empty-state a { color: #1a5c3a; }
@@ -591,101 +612,101 @@
 
 <script>
 var RESTAURANTS = [
-  {name:"In-N-Out Burger",url:"https://www.in-n-out.com/docs/default-source/downloads/in-n-out_allergen_info.pdf",type:"chain",nyc:false},
-  {name:"Boqueria",url:"https://boqueriarestaurant.com/allergy-charts/",type:"independent",nyc:true},
-  {name:"Carmine's",url:"https://carminesnyc.com/assets/uploads/general/carmines_allergies_menu_Dairy-n-Egg_20211126.pdf",type:"independent",nyc:true},
-  {name:"inday",url:"https://media-cdn.getbento.com/accounts/70f6a243176dfee2d001d2708d9b8097/media/Wxft95aWQsyW9PzmzOZk_1.%20Allergen%20Chart%20-%20Spring%202025.pdf",type:"independent",nyc:true},
-  {name:"The Tyger",url:"https://www.thetygernyc.com/menu/allergy-menus/",type:"independent",nyc:true},
-  {name:"Chipotle Mexican Grill",url:"https://www.chipotle.com/allergens",type:"chain",nyc:false},
-  {name:"The Cheesecake Factory",url:"https://www.thecheesecakefactory.com/allergy",type:"chain",nyc:false},
-  {name:"Raising Cane's Chicken Fingers",url:"https://www.raisingcanes.com/allergens/",type:"chain",nyc:false},
-  {name:"Taiyaki NYC",url:"https://taiyakinyc.com/allergen-information",type:"independent",nyc:true},
-  {name:"McDonald's",url:"https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html",type:"chain",nyc:false},
-  {name:"Burger King",url:"https://www.bk.com/allergens",type:"chain",nyc:false},
-  {name:"Starbucks",url:"https://www.starbucks.com/menu/nutrition-and-allergens",type:"chain",nyc:false},
-  {name:"Taco Bell",url:"https://www.tacobell.com/nutrition/allergens",type:"chain",nyc:false},
-  {name:"Wendy's",url:"https://www.wendys.com/nutrition-allergener",type:"chain",nyc:false},
-  {name:"Chick-fil-A",url:"https://www.chick-fil-a.com/nutrition-and-allergens",type:"chain",nyc:false},
-  {name:"Domino's Pizza",url:"https://www.dominos.com/en/pages/content/nutritional/allergens.html",type:"chain",nyc:false},
-  {name:"Dunkin'",url:"https://www.dunkindonuts.com/content/dam/dd/pdf/allergy_ingredient_guide.pdf",type:"chain",nyc:false},
-  {name:"Panda Express",url:"https://www.pandaexpress.com/nutrition",type:"chain",nyc:false},
-  {name:"Five Guys",url:"https://www.fiveguys.com/wp-content/uploads/2025/07/five-guys-us-nutrition-allergen-guide-english-1-final.pdf",type:"chain",nyc:false},
-  {name:"Baskin-Robbins",url:"https://www.baskinrobbins.com/content/dam/br/pdf/BRAllergens.pdf",type:"chain",nyc:false},
-  {name:"Auntie Anne's",url:"https://assets.ctfassets.net/zqt8tllj2cy0/2jjVNaTNGDoMGd4QVucpSy/3c4afc16510a8a90368d67559422025e/Auntie-Annes-Nutrition-Guide.pdf",type:"chain",nyc:false},
-  {name:"Wingstop",url:"https://www.wingstop.com/allergens",type:"chain",nyc:false},
-  {name:"Hunt Brothers Pizza",url:"https://www.huntbrotherspizza.com/wp-content/uploads/2019/06/Allergen-Information.pdf",type:"chain",nyc:false},
-  {name:"Dairy Queen",url:"https://www.dairyqueen.com/en-us/nutrition/food-treats/#nutrition-legend",type:"chain",nyc:false},
-  {name:"Little Caesars",url:"https://littlecaesars.com/static/usnutritionguide.pdf",type:"chain",nyc:false},
-  {name:"Tim Hortons",url:"https://www.timhortons.com/nutrition",type:"chain",nyc:false},
-  {name:"Steak 'n Shake",url:"https://www.steaknshake.com/nutrition",type:"chain",nyc:false},
-  {name:"Jollibee",url:"https://jollibee-prod-media.s3.us-west-2.amazonaws.com/20251114_JB_Canada_Allergen_List_2025_d4e4c5b82f.pdf",type:"chain",nyc:false},
-  {name:"SONIC Drive-In",url:"https://www.sonicdrivein.com/nutrition",type:"chain",nyc:false},
-  {name:"NYC Street Grill",url:"https://nycstreetgrill.com/allergen-chart/",type:"independent",nyc:true},
-  {name:"Johnny's Pizza",url:"https://johnnyspizza.com/allergens/",type:"chain",nyc:false},
-  {name:"Streets of New York",url:"https://www.streetsofnewyork.com/files/allergens-streets-of-new-york-02-24-22-pdf.pdf",type:"chain",nyc:false},
-  {name:"BJ's Restaurants",url:"https://www.bjsrestaurants.com/nutrition",type:"chain",nyc:false},
-  {name:"Dinosaur Bar-B-Que",url:"https://dinosaurbarbque.com/wp-content/uploads/2025/12/Allergen-Guide-In-House_12.11.2025.pdf",type:"chain",nyc:false},
-  {name:"Arby's",url:"https://assets.ctfassets.net/30q5w5l98nbx/62XZduGkLafuaRavOnjAgi/3e79ba2c1766d2c8e767dcd919022027/Arbys_Nutritional_and_Allergen_JAN_2026_v2.pdf",type:"chain",nyc:false},
-  {name:"Chili's Grill & Bar",url:"https://www.chilis.com/nutrition/allergens",type:"chain",nyc:false},
-  {name:"Outback Steakhouse",url:"https://edge.sitecorecloud.io/osirestaurantpartners-piq24hos/media/Project/BBI/outback/static-pages/Obs-Full-Allergens-Information.pdf",type:"chain",nyc:false},
-  {name:"LongHorn Steakhouse",url:"https://media.longhornsteakhouse.com/images/site/ext/pdfs/longhorn-allergen-guide-v1121-1222.pdf",type:"chain",nyc:false},
-  {name:"Subway",url:"https://www.subway.com/en-us/-/media/northamerica/usa/nutrition/nutritiondocuments/2025/us_allergens_en_10-25.pdf",type:"chain",nyc:false},
-  {name:"QDOBA Mexican Eats",url:"https://assets.ctfassets.net/0tc4847zqy12/22paXcrDTeaZ1ArZcmOaTZ/e79966e10c7b81c497f13549fc5febcb/QDOBA_Allergen_Brochure_10.14.25.pdf",type:"chain",nyc:false},
-  {name:"Papa Johns",url:"https://www.papajohns.com/allergens/papa-johns-allergen-guide.html",type:"chain",nyc:false},
-  {name:"Buffalo Wild Wings",url:"https://images.ctfassets.net/6dxmiqksdkqb/7B0sX9GOzCJph89lKqlvxu/0c1304413ec389e7f31c37e99dc92dc2/BWW_Allergen___Preparation_Guide__01-07-2026_-_02-24-2026_.pdf",type:"chain",nyc:false},
-  {name:"Carl's Jr.",url:"https://www.carlsjr.com/nutrition",type:"chain",nyc:false},
-  {name:"Moe's Southwest Grill",url:"https://www.moes.com/nutrition",type:"chain",nyc:false},
-  {name:"Jack in the Box",url:"https://www.jackinthebox.com/nutrition",type:"chain",nyc:false},
-  {name:"Jersey Mike's Subs",url:"https://www.jerseymikes.com/nutrition",type:"chain",nyc:false},
-  {name:"Del Taco",url:"https://deltaco.com/files/pdf/2026/allergens-02-2026.pdf",type:"chain",nyc:false},
-  {name:"KFC",url:"https://www.kfc.com/nutrition/full-nutrition-guide",type:"chain",nyc:false},
-  {name:"Popeyes Louisiana Kitchen",url:"https://plk-use1-prod.sites.rbictg.com/nutrition/Popeyes_US_Allergen.pdf",type:"chain",nyc:false},
-  {name:"Sbarro",url:"https://sbarro.com/wp-content/uploads/2022/10/Sbarro-Nutrition-and-Allergen-Info-10.12.22.pdf",type:"chain",nyc:false},
-  {name:"The Habit Burger Grill",url:"https://www.habitburger.com/nutrition",type:"chain",nyc:false},
-  {name:"Chopt Creative Salad Co.",url:"https://assets.choptsalad.com/pdfs/web/chopt_nutrition_allergen_guide.pdf",type:"chain",nyc:false},
-  {name:"Bonefish Grill",url:"https://edge.sitecorecloud.io/osirestaurantpartners-piq24hos/media/Project/BBI/bonefishgrill/Nutrition/PDFs/Bonefish-Grill-Allergens-February-2026.pdf",type:"chain",nyc:false},
-  {name:"Church's Texas Chicken",url:"https://www.churchs.com/nutrition",type:"chain",nyc:false},
-  {name:"Cracker Barrel Old Country Store",url:"https://www.crackerbarrel.com/menu/nutrition",type:"chain",nyc:false},
-  {name:"Whataburger",url:"https://www.whataburger.com/nutrition",type:"chain",nyc:false},
-  {name:"Two Hands",url:"https://order.online/store/two-hands-tribeca-703996?pickup=true",type:"independent",nyc:true},
-  {name:"Insomnia Cookies",url:"https://api.insomniacookies.com/uploads/Insomnia%20Cookies%20Overall%20Nutritional%20Facts%20Guide.pdf",type:"chain",nyc:false},
-  {name:"Panera Bread",url:"https://www.panerabread.com/content/dam/panerabread/documents/c1-26-allergen-guide.pdf",type:"chain",nyc:false},
-  {name:"TGI Fridays",url:"https://www.tgifridays.com/nutrition",type:"chain",nyc:false},
-  {name:"Manhattan Bagel",url:"https://www.manhattanbagel.com/wp-content/uploads/2023/04/MCB-Nutrition-Guide-Master-2025-1.pdf",type:"chain",nyc:false},
-  {name:"taim",url:"https://cdn.shopify.com/s/files/1/0639/7191/8052/files/taim_Allergen_Guide.pdf?v=1750783880",type:"independent",nyc:true},
-  {name:"Dos Toros Taqueria",url:"https://www.dostoros.com/nutrition",type:"independent",nyc:true},
-  {name:"S'MAC",url:"https://www.eatsmac.com/allergens/",type:"independent",nyc:true},
-  {name:"sweetgreen",url:"https://www.sweetgreen.com/menu",type:"chain",nyc:false},
-  {name:"CAVA",url:"https://assets.ctfassets.net/kugm9fp9ib18/7KrOGNUFZjBddOWezWLWwm/f9cf7abd2116fa4fce16875139347395/CAVA-REC-GID-1225-NutriAllergReg.pdf",type:"chain",nyc:false},
-  {name:"Olive Garden",url:"https://media.olivegarden.com/en_us/pdf/allergen_guide.pdf",type:"chain",nyc:false},
-  {name:"The Halal Guys",url:"https://thehalalguys.com/nutritional-guide/",type:"chain",nyc:false},
-  {name:"Shake Shack",url:"https://shakeshack.com/sites/default/files/2026-01/_Master%20Nut%20%26%20Allergen%201.6.26.pdf",type:"chain",nyc:false},
-  {name:"P.F. Chang's",url:"https://www.pfchangs.com/nutrition/allergens-to-go",type:"chain",nyc:false},
-  {name:"Red Lobster",url:"https://img-ecomm-rl-prod-fye5gqbxdtbghqer.a03.azurefd.net/brandsite/documents/US_Allergen_Final_Guide_1-19-26.pdf",type:"chain",nyc:false},
-  {name:"Cold Stone Creamery",url:"https://www.coldstonecreamery.com/nutrition/pdf/CSC_Food%20Allergies%20and%20Sensitivities.pdf",type:"chain",nyc:false},
-  {name:"Denny's",url:"https://www.dennys.com/nutrition",type:"chain",nyc:false},
-  {name:"Carvel",url:"https://assets.ctfassets.net/zqt8tllj2cy0/rHwJy0WNZfOwxGfMNBev8/57300fb96aa43e393472a949cea81abc/CAR-Nutrition-Book-1.20.26.pdf",type:"chain",nyc:false},
-  {name:"Buca di Beppo",url:"https://dineatbuca.com/wp-content/uploads/2024/09/Buca-Nutritionals-5.03.2022.pdf",type:"chain",nyc:false},
-  {name:"Johnny Rockets",url:"https://www.johnnyrockets.com/wp-content/uploads/sites/3/2023/11/JR-Nutrition-Allergen-Info.pdf",type:"chain",nyc:false},
-  {name:"IHOP",url:"https://www.ihop.com/en/nutrition",type:"chain",nyc:false},
-  {name:"Big Slide Brewery & Public House",url:"https://bigslidebrewery.com/food-allergen-information/",type:"independent",nyc:false},
-  {name:"Krispy Kreme",url:"https://www.krispykreme.com/nutrition-and-allergens",type:"chain",nyc:false},
-  {name:"Pizza Hut",url:"https://www.pizzahut.com/nutrition.html",type:"chain",nyc:false},
-  {name:"Hardee's",url:"https://www.hardees.com/nutrition",type:"chain",nyc:false},
-  {name:"Jimmy John's",url:"https://assets.ctfassets.net/9sn0pujd2a4n/4eaMdncBxh5L83kPRtvHEx/bc3c4033fabb317a0df3bf15e653243b/Allergen_Ingredients.pdf",type:"chain",nyc:false},
-  {name:"Einstein Bros. Bagels",url:"https://www.einsteinbros.com/nutrition-allergens",type:"chain",nyc:false},
-  {name:"Cinnabon",url:"https://assets.ctfassets.net/zqt8tllj2cy0/4YWnuLAUjL1keXkr0r1Joa/3f5350cf08e00f63e73201bcbbc75e72/CIN-Allergen-Chart-122025.pdf",type:"chain",nyc:false},
-  {name:"Zaxby's",url:"https://www.zaxbys.com/uploads/Zaxbys_Nutrition_trifold_2022_P3_web_83a6cecd01_rotated_215301d30f.pdf",type:"chain",nyc:false},
-  {name:"Rita's Italian Ice",url:"https://cdn.ritasice.com/wp-content/uploads/2024/03/2024-Allergen-Chart.pdf",type:"chain",nyc:false},
-  {name:"Wow Bao",url:"https://www.wowbao.com/allergen-and-nutrition-guide/",type:"chain",nyc:false},
-  {name:"Smoothie King",url:"https://www.smoothieking.com/menu/smoothies/ingredients",type:"chain",nyc:false},
-  {name:"Captain D's",url:"https://www.captainds.com/wp-content/uploads/Captain-Ds-Core-Nutrition-and-Allergen-Chart_2-25-22.pdf",type:"chain",nyc:false},
-  {name:"Charleys Cheesesteaks & Wings",url:"https://www.charleys.com/wp-content/uploads/2023/04/Charleys-Cheesesteaks_Nutrition-Guide.pdf",type:"chain",nyc:false},
-  {name:"Hungry Howie's",url:"https://www.hungryhowies.com/ingredients",type:"chain",nyc:false},
-  {name:"Firehouse Subs",url:"https://www.firehousesubs.com/nutrition/",type:"chain",nyc:false},
-  {name:"Dave's Hot Chicken",url:"https://daveshotchicken.com/nutrition/",type:"chain",nyc:false},
-  {name:"Chuck E. Cheese",url:"https://www.chuckecheese.com/wp-content/uploads/2025/01/12.5.24-CEC-24-0297-Chuck-E_Allergens.pdf",type:"chain",nyc:false},
-  {name:"Shake Shack (NYC locations)",url:"https://shakeshack.com/sites/default/files/2026-01/_Master%20Nut%20%26%20Allergen%201.6.26.pdf",type:"chain",nyc:true}
+  {name:"In-N-Out Burger",domain:"in-n-out.com",url:"https://www.in-n-out.com/docs/default-source/downloads/in-n-out_allergen_info.pdf",type:"chain",nyc:false},
+  {name:"Boqueria",domain:"boqueriarestaurant.com",url:"https://boqueriarestaurant.com/allergy-charts/",type:"independent",nyc:true},
+  {name:"Carmine's",domain:"carminesnyc.com",url:"https://carminesnyc.com/assets/uploads/general/carmines_allergies_menu_Dairy-n-Egg_20211126.pdf",type:"independent",nyc:true},
+  {name:"inday",domain:"inday.com",url:"https://media-cdn.getbento.com/accounts/70f6a243176dfee2d001d2708d9b8097/media/Wxft95aWQsyW9PzmzOZk_1.%20Allergen%20Chart%20-%20Spring%202025.pdf",type:"independent",nyc:true},
+  {name:"The Tyger",domain:"thetygernyc.com",url:"https://www.thetygernyc.com/menu/allergy-menus/",type:"independent",nyc:true},
+  {name:"Chipotle Mexican Grill",domain:"chipotle.com",url:"https://www.chipotle.com/allergens",type:"chain",nyc:false},
+  {name:"The Cheesecake Factory",domain:"thecheesecakefactory.com",url:"https://www.thecheesecakefactory.com/allergy",type:"chain",nyc:false},
+  {name:"Raising Cane's Chicken Fingers",domain:"raisingcanes.com",url:"https://www.raisingcanes.com/allergens/",type:"chain",nyc:false},
+  {name:"Taiyaki NYC",domain:"taiyakinyc.com",url:"https://taiyakinyc.com/allergen-information",type:"independent",nyc:true},
+  {name:"McDonald's",domain:"mcdonalds.com",url:"https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html",type:"chain",nyc:false},
+  {name:"Burger King",domain:"bk.com",url:"https://www.bk.com/allergens",type:"chain",nyc:false},
+  {name:"Starbucks",domain:"starbucks.com",url:"https://www.starbucks.com/menu/nutrition-and-allergens",type:"chain",nyc:false},
+  {name:"Taco Bell",domain:"tacobell.com",url:"https://www.tacobell.com/nutrition/allergens",type:"chain",nyc:false},
+  {name:"Wendy's",domain:"wendys.com",url:"https://www.wendys.com/nutrition-allergener",type:"chain",nyc:false},
+  {name:"Chick-fil-A",domain:"chick-fil-a.com",url:"https://www.chick-fil-a.com/nutrition-and-allergens",type:"chain",nyc:false},
+  {name:"Domino's Pizza",domain:"dominos.com",url:"https://www.dominos.com/en/pages/content/nutritional/allergens.html",type:"chain",nyc:false},
+  {name:"Dunkin'",domain:"dunkindonuts.com",url:"https://www.dunkindonuts.com/content/dam/dd/pdf/allergy_ingredient_guide.pdf",type:"chain",nyc:false},
+  {name:"Panda Express",domain:"pandaexpress.com",url:"https://www.pandaexpress.com/nutrition",type:"chain",nyc:false},
+  {name:"Five Guys",domain:"fiveguys.com",url:"https://www.fiveguys.com/wp-content/uploads/2025/07/five-guys-us-nutrition-allergen-guide-english-1-final.pdf",type:"chain",nyc:false},
+  {name:"Baskin-Robbins",domain:"baskinrobbins.com",url:"https://www.baskinrobbins.com/content/dam/br/pdf/BRAllergens.pdf",type:"chain",nyc:false},
+  {name:"Auntie Anne's",domain:"auntieannes.com",url:"https://assets.ctfassets.net/zqt8tllj2cy0/2jjVNaTNGDoMGd4QVucpSy/3c4afc16510a8a90368d67559422025e/Auntie-Annes-Nutrition-Guide.pdf",type:"chain",nyc:false},
+  {name:"Wingstop",domain:"wingstop.com",url:"https://www.wingstop.com/allergens",type:"chain",nyc:false},
+  {name:"Hunt Brothers Pizza",domain:"huntbrotherspizza.com",url:"https://www.huntbrotherspizza.com/wp-content/uploads/2019/06/Allergen-Information.pdf",type:"chain",nyc:false},
+  {name:"Dairy Queen",domain:"dairyqueen.com",url:"https://www.dairyqueen.com/en-us/nutrition/food-treats/#nutrition-legend",type:"chain",nyc:false},
+  {name:"Little Caesars",domain:"littlecaesars.com",url:"https://littlecaesars.com/static/usnutritionguide.pdf",type:"chain",nyc:false},
+  {name:"Tim Hortons",domain:"timhortons.com",url:"https://www.timhortons.com/nutrition",type:"chain",nyc:false},
+  {name:"Steak 'n Shake",domain:"steaknshake.com",url:"https://www.steaknshake.com/nutrition",type:"chain",nyc:false},
+  {name:"Jollibee",domain:"jollibee.com",url:"https://jollibee-prod-media.s3.us-west-2.amazonaws.com/20251114_JB_Canada_Allergen_List_2025_d4e4c5b82f.pdf",type:"chain",nyc:false},
+  {name:"SONIC Drive-In",domain:"sonicdrivein.com",url:"https://www.sonicdrivein.com/nutrition",type:"chain",nyc:false},
+  {name:"NYC Street Grill",domain:"nycstreetgrill.com",url:"https://nycstreetgrill.com/allergen-chart/",type:"independent",nyc:true},
+  {name:"Johnny's Pizza",domain:"johnnyspizza.com",url:"https://johnnyspizza.com/allergens/",type:"chain",nyc:false},
+  {name:"Streets of New York",domain:"streetsofnewyork.com",url:"https://www.streetsofnewyork.com/files/allergens-streets-of-new-york-02-24-22-pdf.pdf",type:"chain",nyc:false},
+  {name:"BJ's Restaurants",domain:"bjsrestaurants.com",url:"https://www.bjsrestaurants.com/nutrition",type:"chain",nyc:false},
+  {name:"Dinosaur Bar-B-Que",domain:"dinosaurbarbque.com",url:"https://dinosaurbarbque.com/wp-content/uploads/2025/12/Allergen-Guide-In-House_12.11.2025.pdf",type:"chain",nyc:false},
+  {name:"Arby's",domain:"arbys.com",url:"https://assets.ctfassets.net/30q5w5l98nbx/62XZduGkLafuaRavOnjAgi/3e79ba2c1766d2c8e767dcd919022027/Arbys_Nutritional_and_Allergen_JAN_2026_v2.pdf",type:"chain",nyc:false},
+  {name:"Chili's Grill & Bar",domain:"chilis.com",url:"https://www.chilis.com/nutrition/allergens",type:"chain",nyc:false},
+  {name:"Outback Steakhouse",domain:"outback.com",url:"https://edge.sitecorecloud.io/osirestaurantpartners-piq24hos/media/Project/BBI/outback/static-pages/Obs-Full-Allergens-Information.pdf",type:"chain",nyc:false},
+  {name:"LongHorn Steakhouse",domain:"longhornsteakhouse.com",url:"https://media.longhornsteakhouse.com/images/site/ext/pdfs/longhorn-allergen-guide-v1121-1222.pdf",type:"chain",nyc:false},
+  {name:"Subway",domain:"subway.com",url:"https://www.subway.com/en-us/-/media/northamerica/usa/nutrition/nutritiondocuments/2025/us_allergens_en_10-25.pdf",type:"chain",nyc:false},
+  {name:"QDOBA Mexican Eats",domain:"qdoba.com",url:"https://assets.ctfassets.net/0tc4847zqy12/22paXcrDTeaZ1ArZcmOaTZ/e79966e10c7b81c497f13549fc5febcb/QDOBA_Allergen_Brochure_10.14.25.pdf",type:"chain",nyc:false},
+  {name:"Papa Johns",domain:"papajohns.com",url:"https://www.papajohns.com/allergens/papa-johns-allergen-guide.html",type:"chain",nyc:false},
+  {name:"Buffalo Wild Wings",domain:"buffalowildwings.com",url:"https://images.ctfassets.net/6dxmiqksdkqb/7B0sX9GOzCJph89lKqlvxu/0c1304413ec389e7f31c37e99dc92dc2/BWW_Allergen___Preparation_Guide__01-07-2026_-_02-24-2026_.pdf",type:"chain",nyc:false},
+  {name:"Carl's Jr.",domain:"carlsjr.com",url:"https://www.carlsjr.com/nutrition",type:"chain",nyc:false},
+  {name:"Moe's Southwest Grill",domain:"moes.com",url:"https://www.moes.com/nutrition",type:"chain",nyc:false},
+  {name:"Jack in the Box",domain:"jackinthebox.com",url:"https://www.jackinthebox.com/nutrition",type:"chain",nyc:false},
+  {name:"Jersey Mike's Subs",domain:"jerseymikes.com",url:"https://www.jerseymikes.com/nutrition",type:"chain",nyc:false},
+  {name:"Del Taco",domain:"deltaco.com",url:"https://deltaco.com/files/pdf/2026/allergens-02-2026.pdf",type:"chain",nyc:false},
+  {name:"KFC",domain:"kfc.com",url:"https://www.kfc.com/nutrition/full-nutrition-guide",type:"chain",nyc:false},
+  {name:"Popeyes Louisiana Kitchen",domain:"popeyes.com",url:"https://plk-use1-prod.sites.rbictg.com/nutrition/Popeyes_US_Allergen.pdf",type:"chain",nyc:false},
+  {name:"Sbarro",domain:"sbarro.com",url:"https://sbarro.com/wp-content/uploads/2022/10/Sbarro-Nutrition-and-Allergen-Info-10.12.22.pdf",type:"chain",nyc:false},
+  {name:"The Habit Burger Grill",domain:"habitburger.com",url:"https://www.habitburger.com/nutrition",type:"chain",nyc:false},
+  {name:"Chopt Creative Salad Co.",domain:"choptsalad.com",url:"https://assets.choptsalad.com/pdfs/web/chopt_nutrition_allergen_guide.pdf",type:"chain",nyc:false},
+  {name:"Bonefish Grill",domain:"bonefishgrill.com",url:"https://edge.sitecorecloud.io/osirestaurantpartners-piq24hos/media/Project/BBI/bonefishgrill/Nutrition/PDFs/Bonefish-Grill-Allergens-February-2026.pdf",type:"chain",nyc:false},
+  {name:"Church's Texas Chicken",domain:"churchs.com",url:"https://www.churchs.com/nutrition",type:"chain",nyc:false},
+  {name:"Cracker Barrel Old Country Store",domain:"crackerbarrel.com",url:"https://www.crackerbarrel.com/menu/nutrition",type:"chain",nyc:false},
+  {name:"Whataburger",domain:"whataburger.com",url:"https://www.whataburger.com/nutrition",type:"chain",nyc:false},
+  {name:"Two Hands",domain:"twohandsnye.com",url:"https://order.online/store/two-hands-tribeca-703996?pickup=true",type:"independent",nyc:true},
+  {name:"Insomnia Cookies",domain:"insomniacookies.com",url:"https://api.insomniacookies.com/uploads/Insomnia%20Cookies%20Overall%20Nutritional%20Facts%20Guide.pdf",type:"chain",nyc:false},
+  {name:"Panera Bread",domain:"panerabread.com",url:"https://www.panerabread.com/content/dam/panerabread/documents/c1-26-allergen-guide.pdf",type:"chain",nyc:false},
+  {name:"TGI Fridays",domain:"tgifridays.com",url:"https://www.tgifridays.com/nutrition",type:"chain",nyc:false},
+  {name:"Manhattan Bagel",domain:"manhattanbagel.com",url:"https://www.manhattanbagel.com/wp-content/uploads/2023/04/MCB-Nutrition-Guide-Master-2025-1.pdf",type:"chain",nyc:false},
+  {name:"taim",domain:"taimkitchen.com",url:"https://cdn.shopify.com/s/files/1/0639/7191/8052/files/taim_Allergen_Guide.pdf?v=1750783880",type:"independent",nyc:true},
+  {name:"Dos Toros Taqueria",domain:"dostoros.com",url:"https://www.dostoros.com/nutrition",type:"independent",nyc:true},
+  {name:"S'MAC",domain:"eatsmac.com",url:"https://www.eatsmac.com/allergens/",type:"independent",nyc:true},
+  {name:"sweetgreen",domain:"sweetgreen.com",url:"https://www.sweetgreen.com/menu",type:"chain",nyc:false},
+  {name:"CAVA",domain:"cava.com",url:"https://assets.ctfassets.net/kugm9fp9ib18/7KrOGNUFZjBddOWezWLWwm/f9cf7abd2116fa4fce16875139347395/CAVA-REC-GID-1225-NutriAllergReg.pdf",type:"chain",nyc:false},
+  {name:"Olive Garden",domain:"olivegarden.com",url:"https://media.olivegarden.com/en_us/pdf/allergen_guide.pdf",type:"chain",nyc:false},
+  {name:"The Halal Guys",domain:"thehalalguys.com",url:"https://thehalalguys.com/nutritional-guide/",type:"chain",nyc:false},
+  {name:"Shake Shack",domain:"shakeshack.com",url:"https://shakeshack.com/sites/default/files/2026-01/_Master%20Nut%20%26%20Allergen%201.6.26.pdf",type:"chain",nyc:false},
+  {name:"P.F. Chang's",domain:"pfchangs.com",url:"https://www.pfchangs.com/nutrition/allergens-to-go",type:"chain",nyc:false},
+  {name:"Red Lobster",domain:"redlobster.com",url:"https://img-ecomm-rl-prod-fye5gqbxdtbghqer.a03.azurefd.net/brandsite/documents/US_Allergen_Final_Guide_1-19-26.pdf",type:"chain",nyc:false},
+  {name:"Cold Stone Creamery",domain:"coldstonecreamery.com",url:"https://www.coldstonecreamery.com/nutrition/pdf/CSC_Food%20Allergies%20and%20Sensitivities.pdf",type:"chain",nyc:false},
+  {name:"Denny's",domain:"dennys.com",url:"https://www.dennys.com/nutrition",type:"chain",nyc:false},
+  {name:"Carvel",domain:"carvel.com",url:"https://assets.ctfassets.net/zqt8tllj2cy0/rHwJy0WNZfOwxGfMNBev8/57300fb96aa43e393472a949cea81abc/CAR-Nutrition-Book-1.20.26.pdf",type:"chain",nyc:false},
+  {name:"Buca di Beppo",domain:"bucadibeppo.com",url:"https://dineatbuca.com/wp-content/uploads/2024/09/Buca-Nutritionals-5.03.2022.pdf",type:"chain",nyc:false},
+  {name:"Johnny Rockets",domain:"johnnyrockets.com",url:"https://www.johnnyrockets.com/wp-content/uploads/sites/3/2023/11/JR-Nutrition-Allergen-Info.pdf",type:"chain",nyc:false},
+  {name:"IHOP",domain:"ihop.com",url:"https://www.ihop.com/en/nutrition",type:"chain",nyc:false},
+  {name:"Big Slide Brewery & Public House",domain:"bigslidebrewery.com",url:"https://bigslidebrewery.com/food-allergen-information/",type:"independent",nyc:false},
+  {name:"Krispy Kreme",domain:"krispykreme.com",url:"https://www.krispykreme.com/nutrition-and-allergens",type:"chain",nyc:false},
+  {name:"Pizza Hut",domain:"pizzahut.com",url:"https://www.pizzahut.com/nutrition.html",type:"chain",nyc:false},
+  {name:"Hardee's",domain:"hardees.com",url:"https://www.hardees.com/nutrition",type:"chain",nyc:false},
+  {name:"Jimmy John's",domain:"jimmyjohns.com",url:"https://assets.ctfassets.net/9sn0pujd2a4n/4eaMdncBxh5L83kPRtvHEx/bc3c4033fabb317a0df3bf15e653243b/Allergen_Ingredients.pdf",type:"chain",nyc:false},
+  {name:"Einstein Bros. Bagels",domain:"einsteinbros.com",url:"https://www.einsteinbros.com/nutrition-allergens",type:"chain",nyc:false},
+  {name:"Cinnabon",domain:"cinnabon.com",url:"https://assets.ctfassets.net/zqt8tllj2cy0/4YWnuLAUjL1keXkr0r1Joa/3f5350cf08e00f63e73201bcbbc75e72/CIN-Allergen-Chart-122025.pdf",type:"chain",nyc:false},
+  {name:"Zaxby's",domain:"zaxbys.com",url:"https://www.zaxbys.com/uploads/Zaxbys_Nutrition_trifold_2022_P3_web_83a6cecd01_rotated_215301d30f.pdf",type:"chain",nyc:false},
+  {name:"Rita's Italian Ice",domain:"ritasice.com",url:"https://cdn.ritasice.com/wp-content/uploads/2024/03/2024-Allergen-Chart.pdf",type:"chain",nyc:false},
+  {name:"Wow Bao",domain:"wowbao.com",url:"https://www.wowbao.com/allergen-and-nutrition-guide/",type:"chain",nyc:false},
+  {name:"Smoothie King",domain:"smoothieking.com",url:"https://www.smoothieking.com/menu/smoothies/ingredients",type:"chain",nyc:false},
+  {name:"Captain D's",domain:"captainds.com",url:"https://www.captainds.com/wp-content/uploads/Captain-Ds-Core-Nutrition-and-Allergen-Chart_2-25-22.pdf",type:"chain",nyc:false},
+  {name:"Charleys Cheesesteaks & Wings",domain:"charleys.com",url:"https://www.charleys.com/wp-content/uploads/2023/04/Charleys-Cheesesteaks_Nutrition-Guide.pdf",type:"chain",nyc:false},
+  {name:"Hungry Howie's",domain:"hungryhowies.com",url:"https://www.hungryhowies.com/ingredients",type:"chain",nyc:false},
+  {name:"Firehouse Subs",domain:"firehousesubs.com",url:"https://www.firehousesubs.com/nutrition/",type:"chain",nyc:false},
+  {name:"Dave's Hot Chicken",domain:"daveshotchicken.com",url:"https://daveshotchicken.com/nutrition/",type:"chain",nyc:false},
+  {name:"Chuck E. Cheese",domain:"chuckecheese.com",url:"https://www.chuckecheese.com/wp-content/uploads/2025/01/12.5.24-CEC-24-0297-Chuck-E_Allergens.pdf",type:"chain",nyc:false},
+  {name:"Shake Shack (NYC locations)",domain:"shakeshack.com",url:"https://shakeshack.com/sites/default/files/2026-01/_Master%20Nut%20%26%20Allergen%201.6.26.pdf",type:"chain",nyc:true}
 ];
 
 var ALLERGENS = ["peanuts","tree nuts","milk","eggs","wheat","soy","fish","shellfish","sesame"];
@@ -768,9 +789,11 @@ function renderGrid() {
     var r = results[i];
     html += '<div class="restaurant-card">';
     html += '<div class="card-top">';
-    html += '<div class="card-name">' + r.name + '</div>';
+    html += '<img class="card-logo" src="https://img.logo.dev/' + r.domain + '?token=pk_SB7dMFMeQfKRBmCl2kHJnA" alt="" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">';
+    html += '<div class="card-logo-fallback" style="display:none">' + r.name.charAt(0) + '</div>';
+    html += '<div style="flex:1"><div class="card-name">' + r.name + '</div>';
     if (r.nyc) html += '<span class="nyc-tag">NYC</span>';
-    html += '</div>';
+    html += '</div></div>';
     html += '<a class="allergen-btn" href="' + r.url + '" target="_blank" rel="noopener noreferrer">';
     html += '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
     html += 'View allergen info</a>';
