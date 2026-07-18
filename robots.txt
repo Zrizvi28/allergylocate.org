@@ -2,12 +2,4 @@ User-agent: *
 Allow: /
 Sitemap: https://allergylocate.org/sitemap.xml
 
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://allergylocate.org/</loc>
-    <lastmod>2026-07-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>
+
