@@ -859,9 +859,9 @@ async function submitForm() {
   var url = document.getElementById('f-url').value.trim();
   if (!name || !url) { alert('Please fill in the restaurant name and URL.'); return; }
 
-  var FORMSPREE_ID = 'https://formspree.io/f/mwvgoqnl';
+  var FORMSPREE_ID = 'mwvgoqnl';
 
-  if (FORMSPREE_ID === 'https://formspree.io/f/mwvgoqnl') {
+  if (FORMSPREE_ID === 'mwvgoqnl') {
     document.getElementById('form-success').style.display = 'block';
     document.getElementById('f-name').value = '';
     document.getElementById('f-url').value = '';
@@ -874,7 +874,7 @@ async function submitForm() {
   }
 
   try {
-    var res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    var res = await fetch('https://formspree.io/f/' + FORMSPREE_ID {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
       body: JSON.stringify({
