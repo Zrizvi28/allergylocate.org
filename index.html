@@ -861,20 +861,8 @@ async function submitForm() {
 
   var FORMSPREE_ID = 'mwvgoqnl';
 
-  if (FORMSPREE_ID === 'mwvgoqnl') {
-    document.getElementById('form-success').style.display = 'block';
-    document.getElementById('f-name').value = '';
-    document.getElementById('f-url').value = '';
-    document.getElementById('f-city').value = '';
-    document.getElementById('f-notes').value = '';
-    document.getElementById('f-submitter').value = '';
-    document.getElementById('f-type').value = '';
-    document.getElementById('f-source').value = '';
-    return;
-  }
-
   try {
-    var res = await fetch('https://formspree.io/f/' + FORMSPREE_ID {
+    var res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
       body: JSON.stringify({
